@@ -1,0 +1,45 @@
+{
+  "context": {
+    "id": "9fb427c1-b037-4b1d-9784-81c6d15ba25a",
+    "name": "pure-fa-c-array"
+  },
+  "description": "This preset will provision 1 regular size 16GB VMware datastore with snapshots on a FlashArray //C arrays with a VMware identifier in the volume name and 1 snapshot every 6 hours and retained for 5 days",
+  "id": "181b6606-a869-4a91-ac23-14cd3b03262d",
+  "name": "pure-fleet:Create-Regular-Size-16GB-VMware-Datastore",
+  "placement_configurations": [
+    {
+      "name": "default-placement",
+      "storage_class": {
+        "name": "flasharray-c",
+        "resource_type": "storage-classes"
+      }
+    }
+  ],
+  "revision": 3,
+  "snapshot_configurations": [
+    {
+      "name": "VMware-Snapshots-6h",
+      "rules": [
+        {
+          "every": "21600000",
+          "keep_for": "432000000"
+        }
+      ]
+    }
+  ],
+  "type": 43,
+  "volume_configurations": [
+    {
+      "count": "1",
+      "name": "fa-c-vmware-datastore",
+      "placement_configurations": [
+        "default-placement"
+      ],
+      "provisioned_size": "17179869184",
+      "snapshot_configurations": [
+        "VMware-Snapshots-6h"
+      ]
+    }
+  ],
+  "workload_type": "VSI"
+}
